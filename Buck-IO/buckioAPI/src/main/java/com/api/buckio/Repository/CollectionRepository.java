@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.api.buckio.Entities.Collection;
 
-public interface CollectionRepository extends JpaRepository<Long, Collection> {
+public interface CollectionRepository extends JpaRepository<Collection,Long > {
 
 }
