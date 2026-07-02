@@ -1,9 +1,5 @@
 package com.api.buckio.Service;
-
-
-
 import org.springframework.stereotype.Service;
-
 import com.api.buckio.DTO.CollectionDTO;
 import com.api.buckio.Entities.Collection;
 import com.api.buckio.Repository.CollectionRepository;
@@ -21,8 +17,8 @@ public class CollectionService {
         Collection collection = new Collection();
         collection.setName(dto.getName());
         collection.setClient(dto.getClient());
-        return repository.save(collection);
-        
+        System.out.println("Collection-Created: " + collection);
+        return repository.save(collection);        
     }
 
 }
