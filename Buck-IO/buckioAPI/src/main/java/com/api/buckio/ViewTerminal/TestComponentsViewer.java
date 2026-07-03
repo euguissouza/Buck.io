@@ -25,12 +25,21 @@ public class TestComponentsViewer {
     public void Viewer(ClientDTO dto){
         List<Client> clients = repository.findAll();
 
+        System.out.println("========BUCK.IO========");
+
         System.out.println("Selecione o Client: ");
         Long setInput = scanner.nextLong();
         
-        if(setInput.equals(clients)){
-            engine.PostRequest(dto);
+        for(Client novo : clients){
+            if(setInput.equals(novo.getId())){  
+            }else{
+                System.out.println("Client não registrada!");
+            };
         }
+
+        System.out.println("Agora insira o json de requisição: ");
+        dto.setBody(scanner.nextLine());
+        engine.PostRequest(dto);
 
 
     }
