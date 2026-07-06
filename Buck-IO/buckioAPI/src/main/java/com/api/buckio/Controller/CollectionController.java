@@ -14,7 +14,7 @@ import com.api.buckio.Repository.CollectionRepository;
 import com.api.buckio.Service.CollectionService;
 
 @RestController
-@RequestMapping("/api/buck.io/Collection")
+@RequestMapping("/apiCollection")
 public class CollectionController {
     
     private CollectionService service;

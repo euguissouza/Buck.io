@@ -14,7 +14,7 @@ import com.api.buckio.Repository.ClientRepository;
 import com.api.buckio.Service.ClientService;
 
 @RestController
-@RequestMapping("/api/buck.io/Clients")
+@RequestMapping("/api/Clients")
 public class ClientController {
 
     private ClientService service;
