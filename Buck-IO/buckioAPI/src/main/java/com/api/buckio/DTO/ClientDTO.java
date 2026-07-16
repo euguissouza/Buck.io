@@ -13,4 +13,5 @@ public class ClientDTO {
     private RequestMode requestMode;
     private String url;
     private String Body;
+    private String response;
 }
