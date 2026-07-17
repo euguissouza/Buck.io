@@ -13,17 +13,22 @@ import reactor.core.publisher.Mono;
 @Service
 public class RequestEngine {
   
-    private final WebClient webClient;
+    private  WebClient webClient;
+    private ClientDTO dto;
 
-    public RequestEngine(WebClient.Builder builder) {
-        this.webClient = builder.build();
+    public RequestEngine(WebClient webClient, ClientDTO dto) {
+        this.dto = dto;
+        this.webClient = webClient;
     }
 
-    public void PostRequest(ClientDTO dto){
-        Mono<Client> created = webClient.post().uri(dto.getUrl())
-        .contentType(MediaType.APPLICATION_JSON).bodyValue(dto.getBody())
-        .retrieve().bodyToMono(Client.class);
+
+    public Mono<ClientDTO>RequestGet(){
+        return webClient.get()
+                .uri(dto.getUrl())
+                .retrieve()
+                .bodyToMono(ClientDTO.class);
     }
+
     
 
 }
