@@ -10,6 +10,7 @@ import com.api.buckio.Repository.ClientRepository;
 public class ClientService {
 
     private ClientRepository repository;
+    private ClientDTO clientDTO;
 
     public ClientService(ClientRepository repository) {
         this.repository = repository;
@@ -22,7 +23,8 @@ public class ClientService {
         client.setRequestMode(dto.getRequestMode());
         client.setBody(dto.getBody());
         client.setUrl(dto.getUrl());
-
         return repository.save(client);
     }
+
+
 }
