@@ -14,17 +14,17 @@ import reactor.core.publisher.Mono;
 public class RequestEngine {
   
     private  WebClient webClient;
-    private ClientDTO dto;
 
-    public RequestEngine(WebClient webClient, ClientDTO dto) {
-        this.dto = dto;
+
+    public RequestEngine(WebClient webClient) {
         this.webClient = webClient;
+
     }
 
 
-    public Mono<ClientDTO>RequestGet(){
+    public Mono<ClientDTO>RequestGet(Client client){
         return webClient.get()
-                .uri(dto.getUrl())
+                .uri(client.getUrl())
                 .retrieve()
                 .bodyToMono(ClientDTO.class);
     }

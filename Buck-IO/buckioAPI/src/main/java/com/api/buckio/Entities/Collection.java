@@ -1,8 +1,6 @@
 package com.api.buckio.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,10 +12,13 @@ import lombok.ToString;
 @ToString
 public class Collection {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
     @JoinColumn(name = "client_id")
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Client client;
 
 }
