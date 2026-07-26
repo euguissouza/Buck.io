@@ -3,10 +3,7 @@ package com.api.buckio.Controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.api.buckio.DTO.ClientDTO;
 import com.api.buckio.Entities.Client;
@@ -40,6 +37,12 @@ public class ClientController {
 
         return ResponseEntity.ok(find);
     }
+
+    @DeleteMapping("/del/{id}")
+    public void delete(@PathVariable Long id){
+        service.DeleteClient(id);
+    }
+
 
     
 
