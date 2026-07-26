@@ -5,15 +5,18 @@ import org.springframework.stereotype.Service;
 import com.api.buckio.DTO.ClientDTO;
 import com.api.buckio.Entities.Client;
 import com.api.buckio.Repository.ClientRepository;
+import reactor.core.publisher.Mono;
 
 @Service
 public class ClientService {
 
     private ClientRepository repository;
-    private ClientDTO clientDTO;
+    private RequestEngine engine;
 
-    public ClientService(ClientRepository repository) {
+
+    public ClientService(ClientRepository repository, RequestEngine engine) {
         this.repository = repository;
+        this.engine = engine;
     }
 
     
@@ -26,5 +29,18 @@ public class ClientService {
         return repository.save(client);
     }
 
+
+    public void DeleteClient(Long id){
+         repository.deleteById(id);
+    }
+
+
+
+    // Seleciona um client para o motor realizar a requisição!
+    public Mono<ClientDTO> findClientId(Long id){
+        Client client = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Client not found!"));
+        return engine.RequestGet(client);
+    }
 
 }

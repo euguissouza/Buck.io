@@ -3,10 +3,7 @@ package com.api.buckio.Controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.api.buckio.DTO.CollectionDTO;
 import com.api.buckio.Entities.Collection;
@@ -37,5 +34,11 @@ public class CollectionController {
         List<Collection> find = repository.findAll();
         return ResponseEntity.ok(find);
     }
+
+    @DeleteMapping("del/{id}")
+    public CollectionController deleteClient(@PathVariable Long id){
+
+    }
+
 
 }
