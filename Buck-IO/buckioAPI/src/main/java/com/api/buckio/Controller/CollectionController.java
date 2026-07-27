@@ -36,8 +36,8 @@ public class CollectionController {
     }
 
     @DeleteMapping("del/{id}")
-    public CollectionController deleteClient(@PathVariable Long id){
-
+    public void deleteCollection(@PathVariable Long id){
+        service.DeleteCollection(id);
     }
 
 

@@ -21,4 +21,10 @@ public class CollectionService {
         return repository.save(collection);        
     }
 
+
+    public void DeleteCollection(Long id){
+        repository.deleteById(id);
+    }
+
+
 }
