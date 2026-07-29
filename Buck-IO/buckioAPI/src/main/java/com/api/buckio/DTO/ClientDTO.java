@@ -2,11 +2,7 @@ package com.api.buckio.DTO;
 
 import com.api.buckio.Enum.RequestMode;
 
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 public class ClientDTO {
 
     private String name;
@@ -14,4 +10,50 @@ public class ClientDTO {
     private String url;
     private String Body;
     private String response;
+
+
+
+
+
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public RequestMode getRequestMode() {
+        return requestMode;
+    }
+    public void setRequestMode(RequestMode requestMode) {
+        this.requestMode = requestMode;
+    }
+    public String getUrl() {
+        return url;
+    }
+    public void setUrl(String url) {
+        this.url = url;
+    }
+    public String getBody() {
+        return Body;
+    }
+    public void setBody(String body) {
+        Body = body;
+    }
+    public String getResponse() {
+        return response;
+    }
+    public void setResponse(String response) {
+        this.response = response;
+    }
+
+    
+    @Override
+    public String toString() {
+        return "ClientDTO [name=" + name + ", requestMode=" + requestMode + ", url=" + url + ", Body=" + Body
+                + ", response=" + response + "]";
+    }
+
+    
+
+    
 }
