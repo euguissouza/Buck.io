@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.api.buckio.DTO.ClientDTO;
 import com.api.buckio.Entities.Client;
+import com.api.buckio.Mappers.ClientMapper;
 import com.api.buckio.Repository.ClientRepository;
 import reactor.core.publisher.Mono;
 
@@ -12,20 +13,19 @@ public class ClientService {
 
     private ClientRepository repository;
     private RequestEngine engine;
+    private ClientMapper mapper;
 
 
-    public ClientService(ClientRepository repository, RequestEngine engine) {
+    public ClientService(ClientRepository repository, RequestEngine engine, ClientMapper mapper) {
         this.repository = repository;
         this.engine = engine;
+        this.mapper = mapper;
     }
 
     
     public Client CreateClient(ClientDTO dto){
         Client client = new Client();
-        client.setName(dto.getName());
-        client.setRequestMode(dto.getRequestMode());
-        client.setBody(dto.getBody());
-        client.setUrl(dto.getUrl());
+        mapper.toEntity(dto);
         return repository.save(client);
     }
 

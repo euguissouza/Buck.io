@@ -6,15 +6,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+
 
 @Entity
 @Table(name = "ClientTB")
-@Getter
-@Setter
-@ToString
 public class Client {
  
     @Id
@@ -25,6 +20,37 @@ public class Client {
     private String url;
     private String Body;
     private String response;
+
+
+    public Long getId() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
+    public RequestMode getRequestMode() {
+        return requestMode;
+    }
+    public String getUrl() {
+        return url;
+    }
+    public String getBody() {
+        return Body;
+    }
+    public String getResponse() {
+        return response;
+    }
+
+    
+    @Override
+    public String toString() {
+        return "Client [id=" + id + ", name=" + name + ", requestMode=" + requestMode + ", url=" + url + ", Body="
+                + Body + ", response=" + response + "]";
+    }
+
+
+    
+    
 
     
 }
