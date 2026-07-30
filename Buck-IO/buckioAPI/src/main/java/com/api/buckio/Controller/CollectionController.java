@@ -23,7 +23,7 @@ public class CollectionController {
     }
 
     @PostMapping("/post")
-    public Collection newCollection(CollectionDTO dto){
+    public Collection newCollection(@RequestBody CollectionDTO dto){
         Collection collection = service.CreateCollection(dto);
         return collection;
     }

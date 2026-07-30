@@ -25,7 +25,7 @@ public class ClientController {
     
 
     @PostMapping("/post")
-    public Client newClient(ClientDTO dto){
+    public Client newClient(@RequestBody ClientDTO dto){
         Client client = service.CreateClient(dto);
         return client;
     }
