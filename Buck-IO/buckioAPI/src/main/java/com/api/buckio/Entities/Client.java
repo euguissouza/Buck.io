@@ -22,26 +22,59 @@ public class Client {
     private String response;
 
 
+    
+    
+    
     public Long getId() {
         return id;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public RequestMode getRequestMode() {
         return requestMode;
     }
+
+    public void setRequestMode(RequestMode requestMode) {
+        this.requestMode = requestMode;
+    }
+
     public String getUrl() {
         return url;
     }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+
     public String getBody() {
         return Body;
     }
+
+    public void setBody(String body) {
+        Body = body;
+    }
+
     public String getResponse() {
         return response;
     }
 
-    
+    public void setResponse(String response) {
+        this.response = response;
+    }
+
+
     @Override
     public String toString() {
         return "Client [id=" + id + ", name=" + name + ", requestMode=" + requestMode + ", url=" + url + ", Body="

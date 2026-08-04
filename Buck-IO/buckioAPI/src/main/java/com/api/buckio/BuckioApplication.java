@@ -8,6 +8,7 @@ public class BuckioApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BuckioApplication.class, args);
+		System.out.println("Service online!");
 	}
 
 }
