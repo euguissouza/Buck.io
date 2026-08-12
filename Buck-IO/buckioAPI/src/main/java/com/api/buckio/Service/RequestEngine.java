@@ -4,7 +4,6 @@ package com.api.buckio.Service;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.api.buckio.DTO.ClientDTO;
 import com.api.buckio.Entities.Client;
 import com.api.buckio.Repository.ClientRepository;
 
@@ -24,15 +23,19 @@ public class RequestEngine {
     }
 
     
-    public Mono<ClientDTO>RequestGet(Client client){
+    public Mono<Client>RequestGet(Client client){
         Client clientBanco = repositoryClient.findById(client.getId())
-        .orElseThrow(() -> new RuntimeException("Url vazia"));
+        .orElseThrow(() -> new RuntimeException("Client not found"));
         return webClient.get()
                 .uri(clientBanco.getUrl())
                 .retrieve()
-                .bodyToMono(ClientDTO.class);
-    }
+                .bodyToMono(String.class)
+                .map(res -> {
+                    clientBanco.setResponse(res);
+                    return repositoryClient.save(clientBanco);
+                });
+                
 
-    
+    }
 
 }

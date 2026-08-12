@@ -42,7 +42,7 @@ public class ClientService {
 
 
     // Seleciona um client para o motor realizar a requisição!
-    public Mono<ClientDTO> findClientId(Long id){
+    public Mono<Client> findClientId(Long id){
         Client client = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Client not found!"));
         return engine.RequestGet(client);
