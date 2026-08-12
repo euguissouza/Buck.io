@@ -1,6 +1,8 @@
 package com.api.buckio.Entities;
 
 import com.api.buckio.Enum.RequestMode;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +21,8 @@ public class Client {
     private RequestMode requestMode;
     private String url;
     private String Body;
+
+    @Column(length = 3000)
     private String response;
 
 
