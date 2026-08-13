@@ -22,6 +22,7 @@ target/
 
 ###database###
 /src/main/resources/data/buck.mv.db
+/src/main/resources/data/buck.trace.db
 
 ### NetBeans ###
 /nbproject/private/
