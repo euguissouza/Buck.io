@@ -24,15 +24,15 @@ public class RequestEngine {
 
     
     public Mono<Client>RequestGet(Client client){
-        Client clientBanco = repositoryClient.findById(client.getId())
+        Client clientDb = repositoryClient.findById(client.getId())
         .orElseThrow(() -> new RuntimeException("Client not found"));
         return webClient.get()
-                .uri(clientBanco.getUrl())
+                .uri(clientDb.getUrl())
                 .retrieve()
                 .bodyToMono(String.class)
                 .map(res -> {
-                    clientBanco.setResponse(res);
-                    return repositoryClient.save(clientBanco);
+                    clientDb.setResponse(res);
+                    return clientDb;
                 });
                 
 
