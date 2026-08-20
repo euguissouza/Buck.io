@@ -1,6 +1,7 @@
 package com.api.buckio.Service;
 
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -26,6 +27,7 @@ public class RequestEngine {
     public Mono<Client>RequestGet(Client client){
         Client clientDb = repositoryClient.findById(client.getId())
         .orElseThrow(() -> new RuntimeException("Client not found"));
+        
         return webClient.get()
                 .uri(clientDb.getUrl())
                 .retrieve()
@@ -34,8 +36,20 @@ public class RequestEngine {
                     clientDb.setResponse(res);
                     return clientDb;
                 });
-                
-
     }
 
+    public Mono<Client>RequestPost(Client client){
+        Client clientDb = repositoryClient.findById(client.getId())
+        .orElseThrow(() -> new RuntimeException("Client not found"));
+
+        return webClient.post()
+        .uri(clientDb.getUrl())
+        .contentType(MediaType.APPLICATION_JSON)
+        .bodyValue(clientDb.getBody())
+        .retrieve().bodyToMono(String.class)
+        .map(res -> {
+            clientDb.setResponse(res);
+            return clientDb;
+        });
+    }
 }

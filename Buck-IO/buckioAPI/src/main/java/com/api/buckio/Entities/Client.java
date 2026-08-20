@@ -1,5 +1,8 @@
 package com.api.buckio.Entities;
 
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 import com.api.buckio.Enum.RequestMode;
 
 import jakarta.persistence.Column;
@@ -20,7 +23,9 @@ public class Client {
     private String name;
     private RequestMode requestMode;
     private String url;
-    private String Body;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    private Object Body;
 
     @Column(length = 3000)
     private String response;
@@ -62,11 +67,11 @@ public class Client {
     }
 
 
-    public String getBody() {
+    public Object getBody() {
         return Body;
     }
 
-    public void setBody(String body) {
+    public void setBody(Object body) {
         Body = body;
     }
 

@@ -2,6 +2,7 @@ package com.api.buckio.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,8 +23,14 @@ public class RequestController {
 
 
     @GetMapping("/get/{id}")
-    public Mono<Client> requestParam(@PathVariable Long id, Client client){
+    public Mono<Client> getParam(@PathVariable Long id, Client client){
         return engine.RequestGet(client);
     }
+
+    @PostMapping("/post/{id}")
+    public Mono<Client> postParam(@PathVariable Long id, Client client){
+        return engine.RequestPost(client);
+    }
+
 
 }

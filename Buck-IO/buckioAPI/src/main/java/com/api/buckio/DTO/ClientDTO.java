@@ -8,7 +8,7 @@ public class ClientDTO {
     private String name;
     private RequestMode requestMode;
     private String url;
-    private String Body;
+    private Object Body;
     private String response;
 
 
@@ -31,10 +31,10 @@ public class ClientDTO {
     public void setUrl(String url) {
         this.url = url;
     }
-    public String getBody() {
+    public Object getBody() {
         return Body;
     }
-    public void setBody(String body) {
+    public void setBody(Object body) {
         Body = body;
     }
     public String getResponse() {
